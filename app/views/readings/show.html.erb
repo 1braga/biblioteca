@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title">Leitura de <%= @reading.user.name %> - <%= @reading.book.title %></h2>
+
+    <p><strong>Status:</strong> <%= @reading.status %></p>
+    <p><strong>Avaliação:</strong> <%= @reading.rating || '-' %></p>
+    <p><strong>Comentário:</strong> <%= @reading.review.presence || 'Sem comentário' %></p>
+
+    <div class="mt-3">
+      <%= link_to "Editar", edit_reading_path(@reading), class: "btn btn-outline-primary" %>
+      <%= link_to "Voltar", readings_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+</div>

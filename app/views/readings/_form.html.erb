@@ -1,0 +1,33 @@
+<%= form_with(model: reading, local: true) do |form| %>
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <%= form.label :user_id, "Usuário", class: "form-label" %>
+      <%= form.collection_select :user_id, User.all, :id, :name, prompt: "Selecione um usuário", class: "form-select" %>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <%= form.label :book_id, "Livro", class: "form-label" %>
+      <%= form.collection_select :book_id, Book.all, :id, :title, prompt: "Selecione um livro", class: "form-select" %>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <%= form.label :status, class: "form-label" %>
+      <%= form.select :status, ["Lido", "Lendo", "Quero Ler"], prompt: "Selecione status", class: "form-select" %>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <%= form.label :rating, "Avaliação (1 a 5)", class: "form-label" %>
+      <%= form.number_field :rating, in: 1..5, class: "form-control" %>
+    </div>
+
+    <div class="col-md-12 mb-3">
+      <%= form.label :review, "Comentário", class: "form-label" %>
+      <%= form.text_area :review, class: "form-control", rows: 3 %>
+    </div>
+  </div>
+
+  <div class="mt-3">
+    <%= form.submit class: "btn btn-success" %>
+    <%= link_to "Voltar", readings_path, class: "btn btn-secondary ms-2" %>
+  </div>
+<% end %>
