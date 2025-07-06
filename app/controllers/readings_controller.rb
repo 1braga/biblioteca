@@ -23,14 +23,14 @@ class ReadingsController < ApplicationController
   def create
     @reading = Reading.new(reading_params)
 
-    respond_to do |format|
-      if @reading.save
-        format.html { redirect_to @reading, notice: "Reading was successfully created." }
-        format.json { render :show, status: :created, location: @reading }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @reading.errors, status: :unprocessable_entity }
-      end
+    if @reading.save
+      ActiveSupport::Notifications.instrument("reading.created", {
+        user: @reading.user,
+        book: @reading.book
+      })
+      redirect_to @reading, notice: "Livro registrado como lido com sucesso."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
