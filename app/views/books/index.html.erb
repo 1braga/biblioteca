@@ -1,3 +1,24 @@
+<%= form_with url: books_path, method: :get, local: true, class: "mb-4 row g-3" do %>
+  <div class="col-md-3">
+    <%= label_tag :genre, "Gênero", class: "form-label" %>
+    <%= select_tag :genre, options_for_select(Book.distinct.pluck(:genre).compact, params[:genre]), include_blank: "Todos", class: "form-select" %>
+  </div>
+
+  <div class="col-md-3">
+    <%= label_tag :year, "Ano", class: "form-label" %>
+    <%= number_field_tag :year, params[:year], class: "form-control", placeholder: "Ex: 2023" %>
+  </div>
+
+  <div class="col-md-4">
+    <%= label_tag :query, "Título contém", class: "form-label" %>
+    <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Ex: Senhor dos Anéis" %>
+  </div>
+
+  <div class="col-md-2 d-flex align-items-end">
+    <%= submit_tag "Filtrar", class: "btn btn-primary w-100" %>
+  </div>
+<% end %>
+
 <div class="d-flex justify-content-between align-items-center mb-3">
   <h1>📚 Livros</h1>
   <%= link_to "Novo Livro", new_book_path, class: "btn btn-primary" %>

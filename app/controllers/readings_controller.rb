@@ -21,7 +21,10 @@ class ReadingsController < ApplicationController
 
   # POST /readings or /readings.json
   def create
-    @reading = Reading.new(reading_params)
+    @reading = RegisterReadingService.new(
+      user: current_user,
+      book: Book.find(reading_params[:book_id])
+    ).call
 
     if @reading.save
       ActiveSupport::Notifications.instrument("reading.created", {
