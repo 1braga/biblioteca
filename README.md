@@ -5,7 +5,7 @@ Email: gbraga.soria@gmail.com
 Este é um projeto desenvolvido como parte do MBA em Desenvolvimento de Software Avançado com foco em RoR. O objetivo é aplicar os conceitos aprendidos em aula para criar uma aplicação web funcional, bem estruturada e com boas práticas de desenvolvimento.
 
 ## Tecnologias Utilizadas
-- Ruby 3.3.3
+- Ruby 3.3.8
 - Ruby on Rails 8.0.2
 - PostgreSQL
 - Bootstrap
