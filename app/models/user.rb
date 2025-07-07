@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    has_many :readings, dependent: :destroy
+    include Nomeavel
     has_secure_password
 
     validates :name, presence: true

@@ -65,3 +65,4 @@ group :test do
 end
 
 gem "bcrypt", "~> 3.1"
+gem "sidekiq"

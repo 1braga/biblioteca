@@ -21,18 +21,24 @@ class ReadingsController < ApplicationController
 
   # POST /readings or /readings.json
   def create
-    @reading = RegisterReadingService.new(
-      user: current_user,
-      book: Book.find(reading_params[:book_id])
-    ).call
+    user = User.find(reading_params[:user_id])
+    book = Book.find(reading_params[:book_id])
 
-    if @reading.save
+    @reading = RegisterReadingService.new(
+      user: user,
+      book: book,
+      status: reading_params[:status],
+      rating: reading_params[:rating],
+      review: reading_params[:review]
+    ).call
+    if @reading.persisted?
       ActiveSupport::Notifications.instrument("reading.created", {
         user: @reading.user,
         book: @reading.book
       })
       redirect_to @reading, notice: "Livro registrado como lido com sucesso."
     else
+      Rails.logger.error "Falha ao criar leitura: #{@reading.errors.full_messages.join(', ')}"
       render :new, status: :unprocessable_entity
     end
   end
@@ -63,11 +69,11 @@ class ReadingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_reading
-      @reading = Reading.find(params.expect(:id))
+      @reading = Reading.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def reading_params
-      params.expect(reading: [ :user_id, :book_id, :status, :rating, :review ])
+      params.require(:reading).permit(:user_id, :book_id, :status, :rating, :review)
     end
 end
