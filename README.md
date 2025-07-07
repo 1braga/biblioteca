@@ -12,11 +12,12 @@ Este é um projeto desenvolvido como parte do MBA em Desenvolvimento de Software
 - Sidekiq
 
 ## Como rodar o projeto localmente
-'''
-#Clone o repositório
+```
+# Clone o repositório
 git clone https://github.com/1braga/biblioteca.git
 cd biblioteca
 
-#Abra o VSCode
-#Inicie o projeto dentro do dev container
-'''
+# Abra o VSCode
+# Inicie o projeto dentro do dev container
+```
+
