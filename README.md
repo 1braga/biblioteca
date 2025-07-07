@@ -1,24 +1,22 @@
-# README
+Aluno: Giovanna Braga
+Email: gbraga.soria@gmail.com
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Biblioteca Virtual
+Este é um projeto desenvolvido como parte do MBA em Desenvolvimento de Software Avançado com foco em RoR. O objetivo é aplicar os conceitos aprendidos em aula para criar uma aplicação web funcional, bem estruturada e com boas práticas de desenvolvimento.
 
-Things you may want to cover:
+## Tecnologias Utilizadas
+- Ruby 3.3.3
+- Ruby on Rails 8.0.2
+- PostgreSQL
+- Bootstrap
+- Sidekiq
 
-* Ruby version
+## Como rodar o projeto localmente
+'''
+#Clone o repositório
+git clone https://github.com/1braga/biblioteca.git
+cd biblioteca
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+#Abra o VSCode
+#Inicie o projeto dentro do dev container
+'''
